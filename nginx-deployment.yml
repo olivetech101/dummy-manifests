@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olivetech-nginx
+spec:
+  selector:
+    matchLabels:
+      app: oli-nginx
+  template:
+    metadata:
+      labels:
+        app: oli-nginx
+    spec:
+      containers:
+      - name: olive-nginx
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
